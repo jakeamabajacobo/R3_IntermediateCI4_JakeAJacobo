@@ -5,12 +5,12 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ItemModel extends Model{
+class ToolModel extends Model{
 
 
-    protected $table = 'tblitem';
+    protected $table = 'tbltool';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['name', 'description','price'];
+    protected $allowedFields = ['name', 'brand','qty'];
     protected $returnType = 'object';
 
     

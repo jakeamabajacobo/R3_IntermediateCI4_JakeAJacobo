@@ -2,19 +2,19 @@
 
 namespace App\Controllers;
 
-class Item extends BaseController
+class Tool extends BaseController
 {
     public function index(): string{
          // dd('hello world!');
       //  return view('welcome_message');
 
-      $item_model = new \App\Models\ItemModel();
+      $tool_model = new \App\Models\ToolModel();
 
       //check database
-      // dd($item_model->findAll());
+      // dd($tool_model->findAll());
 
-      $data['items'] = $item_model->findAll();
-      return view('item/index',$data);
+      $data['tools'] = $tool_model->findAll();
+      return view('tool/index',$data);
     }
 
     /**
@@ -28,9 +28,9 @@ class Item extends BaseController
 
     public function view($id){
 
-      $item_model = new \App\Models\ItemModel();
-      $data['item']= $item_model->find($id);
-      return view('item/view',$data);
+      $tool_model = new \App\Models\ToolModel();
+      $data['tool']= $tool_model->find($id);
+      return view('tool/view',$data);
     }
 
 
@@ -39,25 +39,25 @@ class Item extends BaseController
       $data = array();
       helper(['form']);
       if($this->request->getMethod()=='post'){
-        $post = $this->request->getPost(['name','price','decription']);
+        $post = $this->request->getPost(['name','brand','qty']);
         $rules = [
-          'name' => ['label' => 'Item name', 'rules' => 'required'],
-          'price' => ['label' => 'price', 'rules' => 'required|numeric'],
-          'description' => ['label' => 'description', 'rules' => 'required']
+          'name' => ['label' => 'tool name', 'rules' => 'required'],
+          'brand' => ['label' => 'brand', 'rules' => 'required'],
+          'qty' => ['label' => 'qty', 'rules' => 'required|numeric']
         ];
 
 
         if(! $this->validate($rules)){
           $data['validation'] = $this->validator;
         }else{
-          $item_model = new \App\Models\ItemModel();
-          $item_model->save($post);
+          $tool_model = new \App\Models\ToolModel();
+          $tool_model->save($post);
           return redirect()->to(base_url());
         }
     }
 
 
-      return view('item/add', $data);
+      return view('tool/add', $data);
     }
 
     public function update(){
@@ -65,18 +65,18 @@ class Item extends BaseController
         helper(['form']);
 
         if ($this->request->getMethod() == 'post') {
-            $post = $this->request->getPost(['name', 'price', 'description']);
+            $post = $this->request->getPost(['name', 'brand', 'qty']);
             $rules = [
-                'name' => ['label' => 'Item name', 'rules' => 'required'],
-                'price' => ['label' => 'Price', 'rules' => 'required|numeric'],
-                'description' => ['label' => 'Description', 'rules' => 'required']
+                'name' => ['label' => 'name', 'rules' => 'required'],
+                'brand' => ['label' => 'brand', 'rules' => 'required'],
+                'qty' => ['label' => 'qty', 'rules' => 'required|numeric']
             ];
 
             if (! $this->validate($rules)) {
                 $data['validation'] = $this->validator;
             } else {
-                $item_model = new \App\Models\ItemModel();
-                $item_model->update($this->request->getPost(['id']), $post); 
+                $tool_model = new \App\Models\ToolModel();
+                $tool_model->update($this->request->getPost(['id']), $post); 
 
                 return redirect()->to(base_url());
             }
@@ -87,10 +87,10 @@ class Item extends BaseController
 
     public function delete($id){
       $id = intval($id); 
-      $item_model = new \App\Models\ItemModel();
-      $item = $item_model->find($id);
-      if ($item) {
-          $item_model->delete($id);
+      $tool_model = new \App\Models\ToolModel();
+      $tool = $tool_model->find($id);
+      if ($tool) {
+          $tool_model->delete($id);
           return redirect()->to(base_url());
     }
   }
@@ -102,12 +102,12 @@ class Item extends BaseController
         // if($this->request->getMethod()=='post'){
         //     $post = $this->request->getPost(['name','price','decription']);
         //     // dd($post);
-        //     $item_model = new \App\Models\ItemModel();
+        //     $tool_model = new \App\Models\ToolModel();
             
 
 
 
-        //     $item_model->save($post);
+        //     $tool_model->save($post);
         //     return redirect()->to(base_url());
         //     // return redirect()->to('item/index');
         // }
