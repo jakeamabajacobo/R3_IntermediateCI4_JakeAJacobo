@@ -10,8 +10,8 @@ $routes->setDefaultMethod('index');
 $routes->setAutoRoute(true);
 
 
-// $routes->group('', ['filter'=>'AuthAdmin'], function($routes)
-// {
+$routes->group('', ['filter'=>'AuthAdmin'], function($routes)
+{
 
 $routes->get('/test', 'Home::index');
 $routes->get('/', 'Tool::index');
@@ -25,5 +25,5 @@ $routes->get('/tool/delete', 'Tool::delete');
 $routes->get('/tool/delete/(:num)', 'Tool::delete/$1');
 
 
-// });
+});
 
