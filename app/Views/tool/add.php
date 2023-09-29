@@ -74,7 +74,7 @@
               <div class="form-group row">
                 <div class="offset-4 col-12"><br />
                   <button name="submit" type="submit" class="btn btn-primary">Add</button>
-                  <a type="button" class="btn btn-warning" role="button" a href="<?=base_url()?>">Cancel</a>
+                  <a type="button" class="btn btn-warning" role="button" a href="<?=base_url()?>tool/index">Cancel</a>
 
                 </div>
               </div>

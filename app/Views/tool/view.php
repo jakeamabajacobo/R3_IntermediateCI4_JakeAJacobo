@@ -25,7 +25,7 @@
 
 
 
-<section class="vh-100`" >
+<section class="vh-100" >
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-12">
@@ -71,7 +71,7 @@
               <div class="form-group row">
                 <div class="offset-4 col-12"><br />
              
-                  <a type="button" class="btn btn-primary" role="button" a href="<?=base_url()?>">Back</a>
+                  <a type="button" class="btn btn-primary" role="button" a href="<?=base_url()?>tool/index">Back</a>
 
                 </div>
               </div>

@@ -55,7 +55,7 @@ class Tool extends BaseController
         }else{
           $tool_model = new \App\Models\ToolModel();
           $tool_model->save($post);
-          return redirect()->to(base_url());
+          return redirect()->to(base_url('tool/index'));
         }
     }
 
@@ -89,7 +89,7 @@ class Tool extends BaseController
                 $tool_model = new \App\Models\ToolModel();
                 $tool_model->update($this->request->getPost(['id']), $post); 
 
-                return redirect()->to(base_url());
+                return redirect()->to(base_url('tool/index'));
             }
         }
 
@@ -104,15 +104,25 @@ class Tool extends BaseController
 
 
 
-    public function delete($id){
-      $id = intval($id); 
+  public function delete($id){
       $tool_model = new \App\Models\ToolModel();
-      $tool = $tool_model->find($id);
-      if ($tool) {
-          $tool_model->delete($id);
-          return redirect()->to(base_url());
-    }
+      $data['tool']= $tool_model->find($id);
+      return view('tool/delete', $data);    
   }
+
+
+
+
+  
+  public function destroy($id){
+    $id = intval($id); 
+    $tool_model = new \App\Models\ToolModel();
+    $tool = $tool_model->find($id);
+    if ($tool) {
+        $tool_model->delete($id);
+        return redirect()->to(base_url('tool/index'));
+  }
+}
 
 
 
