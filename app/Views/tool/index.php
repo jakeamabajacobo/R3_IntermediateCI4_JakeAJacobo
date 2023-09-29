@@ -33,11 +33,41 @@
 
 <div class="container">
 <br />
-<a type="button" class="btn btn-primary" href="<?=base_url()?>tool/add" role="button">Add</a>
+
 
     <div class="row">
         <h3>Tool  List</h3>
     
+        <a type="button" class="btn btn-primary" href="<?=base_url()?>tool/add" role="button">Add Tool</a>
+
+    
+        <table id="tbl"  class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>QTY</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <?php foreach($tools  as $tool): ?>
+                <tr data-item-id="<?= $tool->id ?>">         
+                    <td id="<?= $tool->id ?>" data-item-id="<?= $tool->id ?>"><?= $tool->id ?></td>
+                    <td><?= $tool->name ?></td>
+                    <td><?= $tool->brand ?></td>
+                    <td><?= $tool->qty ?></td>
+                    <td>
+                        <a type="button" class="btn btn-primary" href="<?=base_url()?>tool/view/<?=$tool->id;?>" role="button">View</a>
+                        <a type="button" class="btn btn-info"  href="<?=base_url()?>tool/view/<?=$tool->id?>&mode=view">Edit</a>
+                        <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button> 
+                    </td>
+                </tr>
+            <?php endforeach ?> 
+        </table> 
+
+
+
         
     </div>
 </div>

@@ -17,6 +17,9 @@ class Tool extends BaseController
       return view('tool/index',$data);
     }
 
+    
+
+
     /**
      * Summary of test
      * @return string
