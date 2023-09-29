@@ -8,15 +8,15 @@ class Admin extends BaseController
 	{
 		if($this->request->getMethod()=='post'){
             $post= $this->request->getPost(['email', 'password']);
-            // dd($post['email']);
+       
             $admin_model= new \App\Models\AdminModel();
 			$admin= $admin_model->where('email', $post['email'])
 			->where('password', sha1($post['password']))
 			->first();
 			$session= session();
+
 			if(!$admin){
-				// dd('invalid');
-				
+			
 				$session->setflashdata('invalid', 'Invalid username or password');
 			}
 			else
