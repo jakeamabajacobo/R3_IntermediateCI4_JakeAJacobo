@@ -32,9 +32,9 @@
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
     
           <div class="card-body p-5 text-center">
-          <h1> Tool Details</h1>
+          <h1> Update Tool Details</h1>
           
-            <form action="<?=base_url()?>tool/update"  method="POST">
+            <form action="<?=base_url()?>tool/edit/<?=$tool->id?>"  method="POST">
 
             <?php if(isset($validation)): ?>
                 <div class="alert alert-danger" role="alert">
@@ -45,11 +45,13 @@
 
 
               <div class="form-group row">
+              <input id="id" name="id" value="<?=$tool->id?>"   type="hidden" class="form-control">
+
                 <label for="text" class="col-4 col-form-label">Name</label> 
                 <div class="col-8">
                   <div class="input-group">
                 
-                    <input id="text" name="name"  value="<?= $tool->name ?>" placeholder="Tool Name" type="text" class="form-control" readonly>
+                    <input id="text" name="name"  value="<?= $tool->name ?>" placeholder="Tool Name" type="text" class="form-control">
                   </div>
                 </div>
               </div>
@@ -57,21 +59,21 @@
               <div class="form-group row">
                 <label for="price" class="col-4 col-form-label">Brand</label> 
                 <div class="col-8">
-                  <input id="price" name="brand" placeholder="Brand" type="text" class="form-control"   value="<?= $tool->brand ?>"  readonly>
+                  <input id="price" name="brand" placeholder="Brand" type="text" class="form-control"   value="<?= $tool->brand ?>">
                 </div>
               </div>
               <br />
               <div class="form-group row">
                 <label for="description" class="col-4 col-form-label">QTY</label> 
                 <div class="col-8">
-                  <input id="qty" name="qty" class="form-control" placeholder="0" value="<?= $tool->qty ?>"  readonly>
+                  <input type="number" id="qty" name="qty" class="form-control" placeholder="0" value="<?= $tool->qty ?>">
                 </div>
               </div> 
               <br />
               <div class="form-group row">
                 <div class="offset-4 col-12"><br />
-             
-                  <a type="button" class="btn btn-primary" role="button" a href="<?=base_url()?>">Back</a>
+                  <button name="submit" type="submit" class="btn btn-primary">Update</button>
+                  <a type="button" class="btn btn-warning" role="button" a href="<?=base_url()?>">Cancel</a>
 
                 </div>
               </div>

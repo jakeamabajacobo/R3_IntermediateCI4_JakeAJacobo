@@ -17,7 +17,7 @@ class Tool extends BaseController
       return view('tool/index',$data);
     }
 
-    
+
 
 
     /**
@@ -63,21 +63,29 @@ class Tool extends BaseController
       return view('tool/add', $data);
     }
 
-    public function update(){
+    public function edit($id){
+     
       $data = array();
         helper(['form']);
 
         if ($this->request->getMethod() == 'post') {
-            $post = $this->request->getPost(['name', 'brand', 'qty']);
+            $post = $this->request->getPost(['name','brand','qty']);
+            $post['name']= strip_tags($_POST['name']);
+            $post['brand']= strip_tags($_POST['brand']);
+
             $rules = [
                 'name' => ['label' => 'name', 'rules' => 'required'],
                 'brand' => ['label' => 'brand', 'rules' => 'required'],
                 'qty' => ['label' => 'qty', 'rules' => 'required|numeric']
             ];
 
+   
+           
             if (! $this->validate($rules)) {
                 $data['validation'] = $this->validator;
+           
             } else {
+             
                 $tool_model = new \App\Models\ToolModel();
                 $tool_model->update($this->request->getPost(['id']), $post); 
 
@@ -85,7 +93,15 @@ class Tool extends BaseController
             }
         }
 
+        
+        $tool_model= new \App\Models\ToolModel();
+        $data['tool']= $tool_model->find($id);
+        return view('tool/edit', $data);
     }
+  
+
+
+
 
 
     public function delete($id){
@@ -98,25 +114,6 @@ class Tool extends BaseController
     }
   }
 
-
-    public function insert(){
-    //  dd($_POST);
-
-        // if($this->request->getMethod()=='post'){
-        //     $post = $this->request->getPost(['name','price','decription']);
-        //     // dd($post);
-        //     $tool_model = new \App\Models\ToolModel();
-            
-
-
-
-        //     $tool_model->save($post);
-        //     return redirect()->to(base_url());
-        //     // return redirect()->to('item/index');
-        // }
-
-
-    }
 
 
 

@@ -59,7 +59,7 @@
                     <td><?= $tool->qty ?></td>
                     <td>
                         <a type="button" class="btn btn-primary" href="<?=base_url()?>tool/view/<?=$tool->id;?>" role="button">View</a>
-                        <a type="button" class="btn btn-info"  href="<?=base_url()?>tool/view/<?=$tool->id?>&mode=view">Edit</a>
+                        <a type="button" class="btn btn-info"  href="<?=base_url()?>tool/edit/<?=$tool->id?>">Edit</a>
                         <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button> 
                     </td>
                 </tr>
